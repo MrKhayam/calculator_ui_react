@@ -29,7 +29,7 @@ const App = () => {
     <input type="text" id="inp" className='h-12 p-3 text-lg rounded outline-none' />
     <div className="buttons flex justify-center flex-wrap gap-3 w-3/4 mx-auto mt-8 h-full">
       {
-        btns.map((i,index) => <Buttons num={i}></Buttons>)
+        btns.map((button,index) => <Buttons num={button}></Buttons>)
       }
     </div>
     </div>
