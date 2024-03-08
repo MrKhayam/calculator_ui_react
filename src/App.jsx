@@ -1,39 +1,26 @@
-import React from 'react'
-import Buttons from './components/Buttons'
+import React, { useEffect, useState } from 'react'
+import Header from './components/Header'
+import Todos from './components/Todos'
 
 const App = () => {
-  const btns = [
-    "C",
-    "1",
-    "2",
-    "+",
-    "3",
-    "4",
-    "-",
-    "5",
-    "6",
-    "*",
-    "7",
-    "8",
-    "/",
-    "=",
-    "9",
-    "0",
-    ".",
-  ]
+  const [todo, setTodo] = useState("");
+  const [chk, setChk] = useState("");
+
+
   return (
     <>
-    <div className="main w-full h-screen bg-zinc-900 flex justify-center items-center">
-
-    <div className="p-5 border rounded-md flex flex-col justify-center calculator w-96 bg-[#626262] h-auto">
-    <input type="text" id="inp" className='h-12 p-3 text-lg rounded outline-none' />
-    <div className="buttons flex justify-center flex-wrap gap-3 w-3/4 mx-auto mt-8 h-full">
-      {
-        btns.map((button,index) => <Buttons num={button}></Buttons>)
-      }
+    <div className='bg-zinc-900 w-full h-screen text-white'>
+    <Header></Header>
+    <div className="main w-full h-auto p-5 flex items-center justify-center flex-col">
+      <h1 className='text-xl font-semibold text-center'>Add Your Todos</h1>
+      <input type="text" onChange={(e) => setTodo(e.target.value)} className='bg-[#dadada] mt-8 text-black w-full h-10 rounded p-3 outline-none' />
+      <button className="w-full h-10 bg-slate-800 rounded mt-3 text-white border border-slate-800 transition-all active:border-slate-100" onClick={(e => setChk(e.type))}>Add</button>
     </div>
+    <div className='w-full h-auto p-5 mt-8 flex flex-col gap-3'>
+    {chk=== "click" ? (
+      <Todos todoText = {todo}></Todos>
+    ) : null}
     </div>
-    
     </div>
     </>
   )
